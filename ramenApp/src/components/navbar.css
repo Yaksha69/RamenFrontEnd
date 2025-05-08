@@ -2,3 +2,7 @@
 @plugin "daisyui" {
   themes: all;
 }
+
+.sidebar {
+    background-color: #202224;
+}
