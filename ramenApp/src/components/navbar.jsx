@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css'; // Import your custom CSS for the sidebar and header
+import './navbar.css';
+// Import your custom CSS for the sidebar and header
 
 const Navbar = () => {
   return (
