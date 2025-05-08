@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css'; // Import your custom CSS for the sidebar and header
+import './navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col" data-theme="autumn">
       {/* Top Navigation Bar */}
@@ -21,46 +21,52 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Main Content */}
-      <div className="flex flex-col md:flex-row flex-1">
+      {/* Main Content Area */}
+      <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
-        <nav
-          id="sidebar"
-          className="sidebar w-full md:w-64 h-auto md:h-screen bg-base-200 text-base-content custom-sidebar text-white md:sticky md:top-0"
-        >
+        <nav className="w-64 h-screen bg-base-200 text-base-content custom-sidebar text-white sticky top-0 hidden md:block">
           <div className="p-4">
-
             {/* Menu */}
             <h2 className="text-lg font-bold">Menu</h2>
             <ul className="mt-4">
               <li className="mb-2">
                 <Link to="/dashboard" className="block p-2 rounded hover:bg-error">
-                  Dashboard
-                </Link>
-              </li>
-              <li className="mb-2">
-                <Link to="/inventory" className="block p-2 rounded hover:bg-error">
-                  Inventory
+                  <i className="fas fa-tachometer-alt mr-2"></i> Dashboard
                 </Link>
               </li>
               <li className="mb-2">
                 <Link to="/mobile-order" className="block p-2 rounded hover:bg-error">
-                  Mobile Order
+                  <i className="fas fa-shopping-cart mr-2"></i> Orders
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/pos" className="block p-2 rounded hover:bg-error">
-                  POS
+                <Link to="/customers" className="block p-2 rounded hover:bg-error">
+                  <i className="fas fa-users mr-2"></i> Customers
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/sales-report" className="block p-2 rounded hover:bg-error">
-                  Sales Report
+                <Link to="/inventory" className="block p-2 rounded hover:bg-error">
+                  <i className="fas fa-box-open mr-2"></i> Products
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="/analytics" className="block p-2 rounded hover:bg-error">
+                  <i className="fas fa-chart-line mr-2"></i> Analytics
+                </Link>
+              </li>
+              <li className="mb-2">
+                <Link to="/settings" className="block p-2 rounded hover:bg-error">
+                  <i className="fas fa-cog mr-2"></i> Settings
                 </Link>
               </li>
             </ul>
           </div>
         </nav>
+
+        {/* Main Content */}
+        <main className="flex-1 overflow-auto p-4 bg-base-100">
+          {children}
+        </main>
       </div>
     </div>
   );
