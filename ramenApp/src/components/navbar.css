@@ -4,5 +4,20 @@
 }
 
 .sidebar {
-    background-color: #202224;
-}
+    background-color: #1f2937; /* Dark gray */
+    height: auto;   
+  }
+  
+  .sidebar a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .sidebar a:hover {
+    background-color: #ef4444; /* Red */
+  }
+  
+
+  .navbar {
+    background-color: #ef4444; /* Dark gray */
+  }
