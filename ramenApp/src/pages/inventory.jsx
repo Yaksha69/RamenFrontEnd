@@ -54,13 +54,12 @@ function Inventory() {
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-gray-800">Products</h2>
             <div className="flex gap-2">
-              <button className="bg-blue-600 text-white px-6 py-1 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition text-sm">
-                Add Product
+            <button className="btn btn-sm btn-primary text-black">Add Product</button>
+              <button className="btn btn-sm btn-secondary text-black flex items-center">
+                filter
               </button>
-              <button className="border border-gray-300 px-6 py-1 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 transition flex items-center text-sm">
-                <ChevronsDown className="w-4 h-4 mr-2" />
-                Filters
-              </button>
+                
+
             </div>
           </div>
 
@@ -121,9 +120,9 @@ function Inventory() {
           </div>
 
           <div className="flex justify-between items-center mt-4">
-            <button className="border px-4 py-1 rounded-md text-gray-600 focus:ring-2 focus:ring-gray-400">Previous</button>
+          <button className="btn btn-sm btn-primary text-white">Previous Page</button>
             <span className="text-sm text-gray-500">Page 1 of 10</span>
-            <button className="border px-4 py-1 rounded-md text-gray-600 focus:ring-2 focus:ring-gray-400">Next</button>
+            <button className="btn btn-sm btn-primary text-white">Next</button>
           </div>
         </div>
       </main>
