@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Navbar from '../components/navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { FaDownload, FaFilter, FaSearch } from 'react-icons/fa';
 
-const SalesReport = () => {
-
+function SalesReport() {
   const salesData = [
     { id: '00000001', type: 'Dine In', items: '3 Items', price: '₱430', date: '11/12/22' },
     { id: '00000002', type: 'Pick Up', items: '5 Items', price: '₱257', date: '2/12/22' },
@@ -16,95 +18,145 @@ const SalesReport = () => {
   ];
 
   return (
-    <div className="p-6 w-full bg-base-100">
-      <h1 className="text-2xl font-bold mb-6">Reports</h1>
+    <Navbar>
+      <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 className="h2">Sales Reports</h1>
+        <div className="btn-toolbar mb-2 mb-md-0">
+          <button type="button" className="btn btn-sm btn-primary">
+            <FaDownload className="me-2" /> Export Report
+          </button>
+        </div>
+      </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white shadow-md rounded-xl p-4">
-          <h3 className="text-sm text-gray-500">Total Sales</h3>
-          <p className="text-xl font-semibold">100,000</p>
-          <p className="text-xs text-gray-400">Last 7 days</p>
+      <div className="row mb-4">
+        <div className="col-md-3">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-subtitle mb-2 text-muted">Total Sales</h6>
+              <h3 className="card-title">₱100,000</h3>
+              <p className="card-text text-muted small">Last 7 days</p>
+            </div>
+          </div>
         </div>
-        <div className="bg-white shadow-md rounded-xl p-4">
-          <h3 className="text-sm text-gray-500">Total Orders</h3>
-          <p className="text-xl font-semibold">14</p>
-          <p className="text-xs text-gray-400">Last 7 days</p>
+        <div className="col-md-3">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-subtitle mb-2 text-muted">Total Orders</h6>
+              <h3 className="card-title">14</h3>
+              <p className="card-text text-muted small">Last 7 days</p>
+            </div>
+          </div>
         </div>
-        <div className="bg-white shadow-md rounded-xl p-4">
-          <h3 className="text-sm text-gray-500">Order Type</h3>
-          <p className="text-sm">7 Dine In</p>
-          <p className="text-sm">5 Pick Up</p>
-          <p className="text-sm">4 Delivery</p>
+        <div className="col-md-3">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-subtitle mb-2 text-muted">Order Types</h6>
+              <p className="card-text mb-1">7 Dine In</p>
+              <p className="card-text mb-1">5 Pick Up</p>
+              <p className="card-text">4 Delivery</p>
+            </div>
+          </div>
         </div>
-        <div className="bg-white shadow-md rounded-xl p-4">
-          <h3 className="text-sm text-gray-500">Revenue</h3>
-          <p className="text-xl font-semibold text-red-500">25,000</p>
-          <p className="text-xs text-gray-400">Last 7 days</p>
-        </div>
-      </div>
-
-      {/* Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
-        <div className="relative w-full md:w-1/3">
-          <FaSearch className="absolute left-3 top-3 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search..."
-            className="input input-bordered w-full pl-10"
-          />
-        </div>
-
-        <input
-          type="text"
-          className="input input-bordered"
-          placeholder="01 March 2025 - 31 March 2025"
-        />
-
-        <div className="flex gap-2">
-          <button className="btn btn-outline btn-sm">
-            <FaFilter className="mr-2" /> Filters
-          </button>
-          <button className="btn btn-outline btn-sm">
-            <FaDownload className="mr-2" /> Download all
-          </button>
+        <div className="col-md-3">
+          <div className="card">
+            <div className="card-body">
+              <h6 className="card-subtitle mb-2 text-muted">Revenue</h6>
+              <h3 className="card-title text-danger">₱25,000</h3>
+              <p className="card-text text-muted small">Last 7 days</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto bg-white shadow rounded-xl">
-        <table className="table w-full">
-          <thead className="bg-base-200 text-base-content">
-            <tr>
-              <th>TransactionID</th>
-              <th>Order Type</th>
-              <th>Items</th>
-              <th>Total Price</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {salesData.map((item, index) => (
-              <tr key={index} className="hover">
-                <td>{item.id}</td>
-                <td>{item.type}</td>
-                <td>{item.items}</td>
-                <td>{item.price}</td>
-                <td>{item.date}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Filters */}
+      <div className="card mb-4">
+        <div className="card-body">
+          <div className="row g-3">
+            <div className="col-md-4">
+              <div className="input-group">
+                <span className="input-group-text">
+                  <FaSearch />
+                </span>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Search transactions..."
+                />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="01 March 2025 - 31 March 2025"
+              />
+            </div>
+            <div className="col-md-4 d-flex justify-content-end">
+              <button className="btn btn-outline-secondary me-2">
+                <FaFilter className="me-2" /> Filters
+              </button>
+              <button className="btn btn-outline-primary">
+                <FaDownload className="me-2" /> Download
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Pagination */}
-      <div className="flex justify-between mt-4">
-        <button className="btn btn-outline btn-sm">Previous</button>
-        <span className="text-sm text-gray-500">Page 1 of 10</span>
-        <button className="btn btn-outline btn-sm">Next</button>
+      {/* Sales Table */}
+      <div className="card">
+        <div className="card-body">
+          <div className="table-responsive">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th>Transaction ID <i className="fas fa-sort ms-1"></i></th>
+                  <th>Order Type <i className="fas fa-sort ms-1"></i></th>
+                  <th>Items <i className="fas fa-sort ms-1"></i></th>
+                  <th>Total Price <i className="fas fa-sort ms-1"></i></th>
+                  <th>Date <i className="fas fa-sort ms-1"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                {salesData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.id}</td>
+                    <td>
+                      <span className={`badge ${
+                        item.type === 'Dine In' ? 'bg-primary' : 
+                        item.type === 'Pick Up' ? 'bg-info' : 'bg-success'
+                      }`}>
+                        {item.type}
+                      </span>
+                    </td>
+                    <td>{item.items}</td>
+                    <td>{item.price}</td>
+                    <td>{item.date}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination */}
+          <nav aria-label="Page navigation">
+            <ul className="pagination justify-content-center mt-4">
+              <li className="page-item disabled">
+                <a className="page-link" href="#" tabIndex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <li className="page-item active"><a className="page-link" href="#">1</a></li>
+              <li className="page-item"><a className="page-link" href="#">2</a></li>
+              <li className="page-item"><a className="page-link" href="#">3</a></li>
+              <li className="page-item">
+                <a className="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </div>
+    </Navbar>
   );
-};
+}
 
 export default SalesReport;
