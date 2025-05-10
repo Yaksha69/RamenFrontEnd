@@ -4,154 +4,20 @@
 }
 
 .sidebar {
-    background-color: #202224;
-}
-/* Custom styles for the sidebar and header */
-.custom-header {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.custom-sidebar {
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-/* Status badges */
-.status-badge {
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.status-pending {
-  background-color: #fff3cd;
-  color: #856404;
-}
-
-.status-processing {
-  background-color: #cce5ff;
-  color: #004085;
-}
-
-.status-shipped {
-  background-color: #e2d4f0;
-  color: #4a2a7a;
-}
-
-.status-delivered {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-.status-cancelled {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-/* Order timeline */
-.order-timeline {
-  position: relative;
-  padding-left: 30px;
-}
-
-.order-timeline::before {
-  content: '';
-  position: absolute;
-  left: 10px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background-color: #e0e0e0;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -30px;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #3498db;
-  border: 2px solid white;
-}
-
-.timeline-item.completed::before {
-  background-color: #2ecc71;
-}
-
-/* Product images */
-.product-img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-/* Order detail card hover effect */
-.order-detail-card {
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.order-detail-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Modal backdrop */
-.modal {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal.show {
-  display: block;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .custom-sidebar {
-    width: 100%;
-    height: auto;
-    position: static;
+    background-color: #1f2937;
+    height: auto;   
   }
   
-  .table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .sidebar a {
+    color: #ffffff;
+    text-decoration: none;
   }
   
-  .modal-dialog {
-    margin: 0.5rem auto;
+  .sidebar a:hover {
+    background-color: #ef4444;
   }
-}
+  
 
-/* Ensure proper spacing on mobile */
-@media (max-width: 576px) {
-  .card-body .row.g-3 > div {
-    margin-bottom: 10px;
+  .navbar {
+    background-color: #ef4444; 
   }
-  
-  .btn-toolbar {
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-  
-  .modal-dialog {
-    max-width: 95%;
-  }
-  
-  .modal-content {
-    padding: 10px;
-  }
-  
-  .modal-body .row > div {
-    padding: 0;
-  }
-}
