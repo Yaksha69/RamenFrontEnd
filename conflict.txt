@@ -12,12 +12,18 @@
         "@tailwindcss/vite": "^4.1.5",
         "autoprefixer": "^10.4.21",
         "bootstrap": "^5.3.6",
+<<<<<<< orders
+=======
         "chart.js": "^4.4.9",
+>>>>>>> main
         "daisyui": "^5.0.35",
         "postcss": "^8.5.3",
         "react": "^19.1.0",
         "react-bootstrap": "^2.10.9",
+<<<<<<< orders
+=======
         "react-chartjs-2": "^5.3.0",
+>>>>>>> main
         "react-datepicker": "^8.3.0",
         "react-dom": "^19.1.0",
         "react-router-dom": "^7.6.0",
@@ -2113,6 +2119,8 @@
         "url": "https://github.com/chalk/chalk?sponsor=1"
       }
     },
+<<<<<<< orders
+=======
     "node_modules/chart.js": {
       "version": "4.4.9",
       "resolved": "https://registry.npmjs.org/chart.js/-/chart.js-4.4.9.tgz",
@@ -2125,6 +2133,7 @@
         "pnpm": ">=8"
       }
     },
+>>>>>>> main
     "node_modules/classnames": {
       "version": "2.5.1",
       "resolved": "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz",
@@ -3998,9 +4007,15 @@
       }
     },
     "node_modules/react-bootstrap": {
+<<<<<<< orders
+      "version": "2.10.9",
+      "resolved": "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-2.10.9.tgz",
+      "integrity": "sha512-TJUCuHcxdgYpOqeWmRApM/Dy0+hVsxNRFvq2aRFQuxhNi/+ivOxC5OdWIeHS3agxvzJ4Ev4nDw2ZdBl9ymd/JQ==",
+=======
       "version": "2.10.10",
       "resolved": "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-2.10.10.tgz",
       "integrity": "sha512-gMckKUqn8aK/vCnfwoBpBVFUGT9SVQxwsYrp9yDHt0arXMamxALerliKBxr1TPbntirK/HGrUAHYbAeQTa9GHQ==",
+>>>>>>> main
       "license": "MIT",
       "dependencies": {
         "@babel/runtime": "^7.24.7",
@@ -4028,6 +4043,8 @@
         }
       }
     },
+<<<<<<< orders
+=======
     "node_modules/react-chartjs-2": {
       "version": "5.3.0",
       "resolved": "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.3.0.tgz",
@@ -4038,6 +4055,7 @@
         "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
       }
     },
+>>>>>>> main
     "node_modules/react-datepicker": {
       "version": "8.3.0",
       "resolved": "https://registry.npmjs.org/react-datepicker/-/react-datepicker-8.3.0.tgz",
@@ -4456,16 +4474,19 @@
         "node": ">=8"
       }
     },
+<<<<<<< orders
     "node_modules/sweetalert2": {
-      "version": "11.21.1",
-      "resolved": "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.21.1.tgz",
-      "integrity": "sha512-V34x1q5xdwJr64p24AQQ5EzTMJa2ru3xsIUznhYuZf3vumw2xM9BPHvv2Nx9ya25SSUFe2JAnLtaGfgcLLNfCw==",
+      "version": "11.21.0",
+      "resolved": "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.21.0.tgz",
+      "integrity": "sha512-fiEK7SqRY/QD/wC2uqEHlfYGZ7qe2UcyQbJpbpj4YRVqplBgcI+euPZLZL+evLINcvbtXmL1SFUdZHKqBHGAAQ==",
       "license": "MIT",
       "funding": {
         "type": "individual",
         "url": "https://github.com/sponsors/limonte"
       }
     },
+=======
+>>>>>>> main
     "node_modules/tabbable": {
       "version": "6.2.0",
       "resolved": "https://registry.npmjs.org/tabbable/-/tabbable-6.2.0.tgz",
@@ -4518,6 +4539,15 @@
       "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
       "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
       "license": "0BSD"
+<<<<<<< orders
+=======
+    },
+    "node_modules/turbo-stream": {
+      "version": "2.4.0",
+      "resolved": "https://registry.npmjs.org/turbo-stream/-/turbo-stream-2.4.0.tgz",
+      "integrity": "sha512-FHncC10WpBd2eOmGwpmQsWLDoK4cqsA/UT/GqNoaKOQnT8uzhtCbg3EoUDMvqpOSAI0S26mr0rkjzbOO6S3v1g==",
+      "license": "ISC"
+>>>>>>> main
     },
     "node_modules/type-check": {
       "version": "0.4.0",
