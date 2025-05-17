@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import logo from '../assets/logo.png';
 import admin from '../assets/adminPIC.png';
 import notif from '../assets/notif.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
 
 const Navbar = ({ children }) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const navigate = useNavigate();
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !event.composedPath().includes(dropdownRef.current)) {
+        setDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    setDropdownOpen(false);
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen flex flex-col" data-theme="autumn">
       {/* Top Navigation Bar */}
@@ -17,9 +39,24 @@ const Navbar = ({ children }) => {
           <span className="text-lg font-bold">Ramen App</span>
         </div>
         {/* Account Section with Logout */}
-        <div className="flex items-center mt-2 md:mt-0">
+        <div className="flex items-center mt-2 md:mt-0 relative" ref={dropdownRef}>
           <img src={notif} alt='notif' className="h-10 w-10 mr-2" />
-          <img src={admin} alt="admin" className='h-10 w-10 mr-2' />
+          <img
+            src={admin}
+            alt="admin"
+            className='h-10 w-10 mr-2 cursor-pointer'
+            onClick={() => setDropdownOpen((open) => !open)}
+          />
+          {dropdownOpen && (
+            <div className="absolute right-0 mt-12 w-32 bg-white text-black rounded shadow-lg z-20">
+              <button
+                className="block w-full text-left px-4 py-2 hover:bg-gray-200 rounded"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
@@ -42,7 +79,7 @@ const Navbar = ({ children }) => {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/customers" className="block p-2 rounded hover:bg-error">
+                <Link to="/Reports" className="block p-2 rounded hover:bg-error">
                   <i className="fas fa-users mr-2"></i> Reports
                 </Link>
               </li>

@@ -30,7 +30,7 @@ const Navbar = ({ children }) => {
             <h2 className="text-lg font-bold">Menu</h2>
             <ul className="mt-4">
               <li className="mb-2">
-                <Link to="/dashboard" className="block p-2 rounded hover:bg-error">
+                <Link to="/POS" className="block p-2 rounded hover:bg-error">
                   <i className="fas fa-tachometer-alt mr-2"></i> Point of Sale
                 </Link>
               </li>
