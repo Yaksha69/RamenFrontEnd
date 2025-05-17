@@ -13,7 +13,7 @@ const Login = () => {
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: `url('/src/assets/rrrr.jpg')` }}
+      style={{ backgroundImage: `url('/rrrr.jpg')` }}
     >
       <div className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-lg p-8 w-full max-w-md flex flex-col items-center">
         <h2 className="text-3xl font-bold mb-6 text-white drop-shadow">Login</h2>
