@@ -4,7 +4,7 @@
 }
 
 .sidebar {
-    background-color: #1f2937;
+    background-color: #1f2937; /* Dark gray */
     height: auto;   
   }
   
@@ -14,10 +14,11 @@
   }
   
   .sidebar a:hover {
-    background-color: #ef4444;
+    background-color: #ef4444; /* Red */
   }
   
 
   .navbar {
-    background-color: #ef4444; 
+    background-color: #ef4444; /* Dark gray */
+
   }
