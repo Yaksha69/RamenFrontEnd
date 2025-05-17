@@ -49,13 +49,13 @@ function Pos() {
   const [selectedSpiceLevel, setSelectedSpiceLevel] = useState('Mild');
 
   const [menuItems] = useState([
-    { name: 'Tonkotsu Ramen', price: 210, image: 'tonkotsu.jpg', category: 'Ramen' },
+    { name: 'Tonkotsu Ramen', price: 210, image: 'Tramen.jpg', category: 'Ramen' },
     { name: 'Tantanmen Ramen', price: 210, image: 'tantanmen.jpg', category: 'Ramen' },
-    { name: 'Karaage Ramen', price: 200, image: 'karaage.jpg', category: 'Ramen' },
+    { name: 'Karaage Ramen', price: 200, image: 'karaaageRamen.jpg', category: 'Ramen' },
     { name: 'Chicken Karaage', price: 160, image: 'karaage-chicken.jpg', category: 'Side Dishes' },
-    { name: 'Chashu Don', price: 150, image: 'chashu.jpg', category: 'Rice Bowls' },
-    { name: 'Katsu Curry', price: 180, image: 'katsu.jpg', category: 'Rice Bowls' },
-    { name: 'California Roll Sushi', price: 170, image: 'california-roll.jpg', category: 'Side Dishes' },
+    { name: 'Chashu Don', price: 150, image: 'Chashu-Don-3.jpg', category: 'Rice Bowls' },
+    { name: 'Katsu Curry', price: 180, image: 'katsuCurry.jpg', category: 'Rice Bowls' },
+    { name: 'California Roll Sushi', price: 170, image: 'california.jpg', category: 'Side Dishes' },
     { name: 'Gyoza', price: 80, image: 'gyoza.jpg', category: 'Side Dishes' },
     { name: 'Tempura', price: 150, image: 'tempura.jpg', category: 'Side Dishes' },
   ]);
@@ -106,7 +106,13 @@ function Pos() {
 
   const handleCheckout = () => {
     if (cartItems.length === 0) {
-      alert('Please add items to cart first');
+      // Use SweetAlert2 for the alert
+      Swal.fire({
+        icon: 'warning',
+        title: 'Cart is empty',
+        text: 'Please add items to cart first',
+        confirmButtonColor: '#dc3545'
+      });
       return;
     }
     setShowPaymentModal(true);
@@ -118,9 +124,6 @@ function Pos() {
       title: 'Order Completed!',
       html: 
         <div class="text-left">
-          <p><strong>Order Type:</strong> ${orderType}</p>
-          <p><strong>Payment Method:</strong> ${paymentMethod}</p>
-          <p><strong>Total Amount:</strong> PHP ${calculateTotal().toFixed(2)}</p>
         </div>
       ,
       icon: 'success',
@@ -153,7 +156,7 @@ function Pos() {
                 <input
                   type="text"
                   className="form-control pl-10 pr-4 py-2 rounded-lg border-gray-300 focus:border-red-400 focus:ring focus:ring-red-200 focus:ring-opacity-50 w-full bg-gray-50"
-                  placeholder="Search menu items..."
+                  placeholder="     Search menu items..."
                   aria-label="Search menu"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
