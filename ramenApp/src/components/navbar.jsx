@@ -79,7 +79,7 @@ const Navbar = ({ children }) => {
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/Reports" className="block p-2 rounded hover:bg-error">
+                <Link to="/customers" className="block p-2 rounded hover:bg-error">
                   <i className="fas fa-users mr-2"></i> Reports
                 </Link>
               </li>
