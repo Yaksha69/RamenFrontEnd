@@ -41,7 +41,7 @@ function Dashboard() {
                 <div className="bg-white rounded-xl shadow p-6">
                 <div className="flex justify-between items-center mb-4">
                     <h3 className="font-bold text-lg">Sales Details</h3>
-                    <button className="btn btn-sm btn-secondary text-black">More Details</button>
+                    <button className="btn btn-sm btn-danger text-light">More Details</button>
                 </div>
                 <div className="w-full h-48 bg-gray-100 rounded flex items-center justify-center text-gray-400">
                     {/* Replace with chart component */}

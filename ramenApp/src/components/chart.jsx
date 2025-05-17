@@ -26,7 +26,7 @@ const data = {
   datasets: [
     {
       label: 'Actual Sales',
-      data: [120, 190, 300, 500, 200, 300, 400],
+      data: [120, 190, 300, 500],
       fill: false,
       borderColor: 'rgb(75, 192, 192)',
       tension: 0.1,
@@ -51,7 +51,7 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Actual vs Predicted Sales Over the Week',
+      text: 'Actual vs Predicted Sales',
     },
   },
 };
