@@ -13,7 +13,7 @@ const CashierLogin = () => {
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: `url('/src/assets/rrrr.jpg')` }}
+      style={{ backgroundImage: `url('/rrrr.jpg')` }}
     >
       <div className="backdrop-blur-md bg-white/20 border border-white/30 rounded-xl shadow-lg p-8 w-full max-w-md flex flex-col items-center">
         <h3 className="text-xl font-semibold mb-6 text-white drop-shadow">Cashier Login</h3>
