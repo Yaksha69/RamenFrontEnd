@@ -96,7 +96,7 @@ function Inventory() {
   const handleDelete = (index) => {
     Swal.fire({
       title: 'Are you sure?',
-      text: "You won’t be able to revert this",
+      text: "You won't be able to revert this",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -142,35 +142,35 @@ function Inventory() {
 
   return (
     <Navbar>
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-4 sm:p-8">
         {/* STATS CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow p-6 flex flex-col">
-            <span className="text-gray-500 font-medium mb-2">Total Ingredients</span>
-            <span className="text-2xl font-bold mb-3">14</span>
-            <span className="text-black-500 text-sm font-medium">Last 7 Days</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="bg-white rounded-xl shadow p-4 sm:p-6 flex flex-col">
+            <span className="text-gray-500 font-medium mb-1 sm:mb-2 text-xs sm:text-base">Total Ingredients</span>
+            <span className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">14</span>
+            <span className="text-black-500 text-xs sm:text-sm font-medium">Last 7 Days</span>
           </div>
-          <div className="bg-white rounded-xl shadow p-6 flex flex-col">
-            <span className="text-gray-500 font-medium mb-2">Total Product</span>
-            <span className="text-2xl font-bold mb-3">868</span>
-            <span className="text-black-500 text-sm font-medium">Last 7 Days</span>
+          <div className="bg-white rounded-xl shadow p-4 sm:p-6 flex flex-col">
+            <span className="text-gray-500 font-medium mb-1 sm:mb-2 text-xs sm:text-base">Total Product</span>
+            <span className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">868</span>
+            <span className="text-black-500 text-xs sm:text-sm font-medium">Last 7 Days</span>
           </div>
-          <div className="bg-white rounded-xl shadow p-6 flex flex-col">
-            <span className="text-gray-600 font-semibold text-sm mb-4">Stock Turnover</span>
+          <div className="bg-white rounded-xl shadow p-4 sm:p-6 flex flex-col">
+            <span className="text-gray-600 font-semibold text-xs sm:text-sm mb-2 sm:mb-4">Stock Turnover</span>
             <div className="flex justify-between items-center mb-1">
-              <span className="text-2xl font-bold">5</span>
+              <span className="text-xl sm:text-2xl font-bold">5</span>
             </div>
-            <div className="flex justify-between text-sm text-gray-400">
+            <div className="flex justify-between text-xs sm:text-sm text-gray-400">
               <span>last 7 Days</span>
             </div>
           </div>
-          <div className="bg-white rounded-xl shadow p-6 flex flex-col">
-            <span className="text-gray-600 font-semibold text-sm mb-4">Low Stock</span>
+          <div className="bg-white rounded-xl shadow p-4 sm:p-6 flex flex-col">
+            <span className="text-gray-600 font-semibold text-xs sm:text-sm mb-2 sm:mb-4">Low Stock</span>
             <div className="flex justify-between items-center mb-1">
-              <span className="text-2xl font-bold">5</span>
-              <span className="text-xl font-semibold text-gray-600">2</span>
+              <span className="text-xl sm:text-2xl font-bold">5</span>
+              <span className="text-lg sm:text-xl font-semibold text-gray-600">2</span>
             </div>
-            <div className="flex justify-between text-sm text-gray-400">
+            <div className="flex justify-between text-xs sm:text-sm text-gray-400">
               <span>Ordered</span>
               <span>Not in Stock</span>
             </div>
@@ -178,11 +178,11 @@ function Inventory() {
         </div>
 
         {/* SEARCH BAR */}
-        <div className="relative mb-4">
+        <div className="relative mb-4 w-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           <input
             type="text"
             placeholder="Search by ..."
-            className="w-full md:w-64 px-4 py-1 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-black-500"
+            className="w-full sm:w-64 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-black-500 text-sm"
             value={searchTerm}
             onChange={(e) => {
               setSearchTerm(e.target.value);
@@ -192,19 +192,19 @@ function Inventory() {
         </div>
 
         {/* INGREDIENT TABLE CONTAINER */}
-        <div className="ingredient-table-container bg-white rounded-xl shadow p-6 mt-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-xl font-semibold text-gray-800">Raw Ingredients</h3>
-            <div className="flex gap-2">
+        <div className="ingredient-table-container bg-white rounded-xl shadow p-4 sm:p-6 mt-4 sm:mt-6">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-2">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Raw Ingredients</h3>
+            <div className="flex gap-2 w-full sm:w-auto">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="btn btn-sm btn-primary text-black"
+                className="btn btn-sm btn-primary text-black w-1/2 sm:w-auto"
               >
                 Add New Product
               </button>
               <button
                 onClick={() => setIsIngredientModalOpen(true)}
-                className="btn btn-sm btn-primary text-black"
+                className="btn btn-sm btn-primary text-black w-1/2 sm:w-auto"
               >
                 Add Ingredients
               </button>
@@ -212,25 +212,25 @@ function Inventory() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="min-w-full text-sm text-left text-gray-600">
+            <table className="min-w-[600px] w-full text-xs sm:text-sm text-left text-gray-600">
               <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
                 <tr>
-                  <th className="px-4 py-2">Name</th>
-                  <th className="px-4 py-2">Quantity</th>
-                  <th className="px-4 py-2">Units</th>
-                  <th className="px-4 py-2">Restocked Date</th>
-                  <th className="px-4 py-2">Status</th>
-                  <th className="px-4 py-2">Actions</th>
+                  <th className="px-2 sm:px-4 py-2">Name</th>
+                  <th className="px-2 sm:px-4 py-2">Quantity</th>
+                  <th className="px-2 sm:px-4 py-2">Units</th>
+                  <th className="px-2 sm:px-4 py-2">Restocked Date</th>
+                  <th className="px-2 sm:px-4 py-2">Status</th>
+                  <th className="px-2 sm:px-4 py-2">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {currentItems.map((item) => (
                   <tr key={item.name} className="border-b">
-                    <td className="px-4 py-2">{item.name}</td>
-                    <td className="px-4 py-2">{item.qty}</td>
-                    <td className="px-4 py-2">{item.unit}</td>
-                    <td className="px-4 py-2">{item.date}</td>
-                    <td className="px-4 py-2">
+                    <td className="px-2 sm:px-4 py-2">{item.name}</td>
+                    <td className="px-2 sm:px-4 py-2">{item.qty}</td>
+                    <td className="px-2 sm:px-4 py-2">{item.unit}</td>
+                    <td className="px-2 sm:px-4 py-2">{item.date}</td>
+                    <td className="px-2 sm:px-4 py-2">
                       <span className={`${
                         item.status === "In-stock"
                           ? "text-green-600"
@@ -241,7 +241,7 @@ function Inventory() {
                         {item.status}
                       </span>
                     </td>
-                    <td className="px-4 py-2 flex gap-2">
+                    <td className="px-2 sm:px-4 py-2 flex gap-1 sm:gap-2">
                       <button
                         className="text-purple-600"
                         onClick={() => {
@@ -290,19 +290,19 @@ function Inventory() {
           </div>
 
           {/* Pagination controls */}
-          <div className="flex justify-between items-center mt-4">
+          <div className="flex flex-col sm:flex-row justify-between items-center mt-4 gap-2">
             <button
-              className="btn btn-sm btn-primary text-white"
+              className="btn btn-sm btn-primary text-white w-full sm:w-auto"
               onClick={goToPreviousPage}
               disabled={currentPage === 1}
             >
               Previous Page
             </button>
-            <span className="text-sm text-gray-500">
+            <span className="text-xs sm:text-sm text-gray-500">
               Page {totalPages === 0 ? 0 : currentPage} of {totalPages}
             </span>
             <button
-              className="btn btn-sm btn-primary text-white"
+              className="btn btn-sm btn-primary text-white w-full sm:w-auto"
               onClick={goToNextPage}
               disabled={currentPage === totalPages || totalPages === 0}
             >
@@ -313,12 +313,12 @@ function Inventory() {
 
         {/* ADD PRODUCT MODAL */}
         {isModalOpen && (
-          <div className="fixed inset-0 bg-opacity-30 flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-xl w-full max-w-md shadow-lg">
-              <h2 className="text-xl font-semibold mb-4">Add New Product</h2>
+          <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 px-2">
+            <div className="bg-white p-4 sm:p-6 rounded-xl w-full max-w-md shadow-lg">
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Add New Product</h2>
 
-              <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Upload Image</label>
+              <div className="mb-3 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium mb-1">Upload Image</label>
                 <input
                   type="file"
                   accept="image/*"
@@ -327,8 +327,8 @@ function Inventory() {
                 />
               </div>
 
-              <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Product Name</label>
+              <div className="mb-3 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium mb-1">Product Name</label>
                 <input
                   type="text"
                   value={newProduct.name}
@@ -336,148 +336,148 @@ function Inventory() {
                   className="w-full border rounded p-2"
                 />
               </div>
-              <div className="mb-4"> <label className="block text-sm font-medium mb-1">Price</label> 
-              <input type="number" value={newProduct.price} onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value 
-              })} className="w-full border rounded p-2" /> 
+              <div className="mb-3 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium mb-1">Price</label>
+                <input type="number" value={newProduct.price} onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })} className="w-full border rounded p-2" />
               </div>
-                        <div className="flex justify-end gap-2">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="btn btn-secondary"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={() => {
-                // Add logic to save product here
-                setIsModalOpen(false);
-                showSuccess("Product added successfully!");
-              }}
-              className="btn btn-primary"
-            >
-              Save
-            </button>
+              <div className="flex flex-col sm:flex-row justify-end gap-2">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="btn btn-secondary w-full sm:w-auto"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    // Add logic to save product here
+                    setIsModalOpen(false);
+                    showSuccess("Product added successfully!");
+                  }}
+                  className="btn btn-primary w-full sm:w-auto"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    )}
+        )}
 
-    {/* ADD INGREDIENT MODAL */}
-    {isIngredientModalOpen && (
-      <div className="fixed inset-0 bg-opacity-30 flex items-center justify-center z-50">
-        <div className="bg-white p-6 rounded-xl w-full max-w-md shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">Add New Ingredient</h2>
+        {/* ADD INGREDIENT MODAL */}
+        {isIngredientModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 px-2">
+            <div className="bg-white p-4 sm:p-6 rounded-xl w-full max-w-md shadow-lg">
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Add New Ingredient</h2>
 
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Ingredient Name</label>
-            <input
-              type="text"
-              value={ingredientData.name}
-              onChange={(e) => setIngredientData({ ...ingredientData, name: e.target.value })}
-              className="w-full border rounded p-2"
-            />
+              <div className="mb-3 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium mb-1">Ingredient Name</label>
+                <input
+                  type="text"
+                  value={ingredientData.name}
+                  onChange={(e) => setIngredientData({ ...ingredientData, name: e.target.value })}
+                  className="w-full border rounded p-2"
+                />
+              </div>
+
+              <div className="mb-3 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium mb-1">Quantity</label>
+                <input
+                  type="number"
+                  value={ingredientData.quantity}
+                  onChange={(e) => setIngredientData({ ...ingredientData, quantity: e.target.value })}
+                  className="w-full border rounded p-2"
+                />
+              </div>
+
+              <div className="flex flex-col sm:flex-row justify-end gap-2">
+                <button
+                  onClick={() => setIsIngredientModalOpen(false)}
+                  className="btn btn-secondary w-full sm:w-auto"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    if (!ingredientData.name || !ingredientData.quantity) {
+                      Swal.fire('Error', 'Please fill in all fields', 'error');
+                      return;
+                    }
+                    const newIngredient = {
+                      name: ingredientData.name,
+                      qty: Number(ingredientData.quantity),
+                      unit: "Units", // You can add a unit input if you want
+                      date: new Date().toLocaleDateString(),
+                      status: Number(ingredientData.quantity) === 0
+                        ? "Out of stock"
+                        : Number(ingredientData.quantity) < 5
+                        ? "Low stock"
+                        : "In-stock"
+                    };
+                    setIngredientList([newIngredient, ...ingredientList]);
+                    setIngredientData({ name: '', quantity: '' });
+                    setIsIngredientModalOpen(false);
+                    setCurrentPage(1);
+                    showSuccess("Ingredient added successfully!");
+                  }}
+                  className="btn btn-primary w-full sm:w-auto"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
           </div>
+        )}
 
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Quantity</label>
-            <input
-              type="number"
-              value={ingredientData.quantity}
-              onChange={(e) => setIngredientData({ ...ingredientData, quantity: e.target.value })}
-              className="w-full border rounded p-2"
-            />
+        {/* EDIT INGREDIENT MODAL */}
+        {editIndex !== null && (
+          <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 px-2">
+            <div className="bg-white p-4 sm:p-6 rounded-xl w-full max-w-md shadow-lg">
+              <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Edit Ingredient</h2>
+
+              <div className="mb-3 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium mb-1">Ingredient Name</label>
+                <input
+                  type="text"
+                  value={editIngredient.name}
+                  onChange={(e) => setEditIngredient({ ...editIngredient, name: e.target.value })}
+                  className="w-full border rounded p-2"
+                />
+              </div>
+
+              <div className="mb-3 sm:mb-4">
+                <label className="block text-xs sm:text-sm font-medium mb-1">Quantity</label>
+                <input
+                  type="number"
+                  value={editIngredient.qty}
+                  onChange={(e) => setEditIngredient({ ...editIngredient, qty: e.target.value })}
+                  className="w-full border rounded p-2"
+                />
+              </div>
+
+              <div className="flex flex-col sm:flex-row justify-end gap-2">
+                <button
+                  onClick={() => setEditIndex(null)}
+                  className="btn btn-secondary w-full sm:w-auto"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    if (!editIngredient.name || editIngredient.qty === "") {
+                      Swal.fire('Error', 'Please fill in all fields', 'error');
+                      return;
+                    }
+                    handleSaveEdit();
+                  }}
+                  className="btn btn-primary w-full sm:w-auto"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
           </div>
-
-          <div className="flex justify-end gap-2">
-            <button
-              onClick={() => setIsIngredientModalOpen(false)}
-              className="btn btn-secondary"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={() => {
-                if (!ingredientData.name || !ingredientData.quantity) {
-                  Swal.fire('Error', 'Please fill in all fields', 'error');
-                  return;
-                }
-                const newIngredient = {
-                  name: ingredientData.name,
-                  qty: Number(ingredientData.quantity),
-                  unit: "Units", // You can add a unit input if you want
-                  date: new Date().toLocaleDateString(),
-                  status: Number(ingredientData.quantity) === 0
-                    ? "Out of stock"
-                    : Number(ingredientData.quantity) < 5
-                    ? "Low stock"
-                    : "In-stock"
-                };
-                setIngredientList([newIngredient, ...ingredientList]);
-                setIngredientData({ name: '', quantity: '' });
-                setIsIngredientModalOpen(false);
-                setCurrentPage(1);
-                showSuccess("Ingredient added successfully!");
-              }}
-              className="btn btn-primary"
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </div>
-    )}
-
-    {/* EDIT INGREDIENT MODAL */}
-    {editIndex !== null && (
-      <div className="fixed inset-0 bg-opacity-30 flex items-center justify-center z-50">
-        <div className="bg-white p-6 rounded-xl w-full max-w-md shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">Edit Ingredient</h2>
-
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Ingredient Name</label>
-            <input
-              type="text"
-              value={editIngredient.name}
-              onChange={(e) => setEditIngredient({ ...editIngredient, name: e.target.value })}
-              className="w-full border rounded p-2"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Quantity</label>
-            <input
-              type="number"
-              value={editIngredient.qty}
-              onChange={(e) => setEditIngredient({ ...editIngredient, qty: e.target.value })}
-              className="w-full border rounded p-2"
-            />
-          </div>
-
-          <div className="flex justify-end gap-2">
-            <button
-              onClick={() => setEditIndex(null)}
-              className="btn btn-secondary"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={() => {
-                if (!editIngredient.name || editIngredient.qty === "") {
-                  Swal.fire('Error', 'Please fill in all fields', 'error');
-                  return;
-                }
-                handleSaveEdit();
-              }}
-              className="btn btn-primary"
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </div>
-    )}
-  </main>
-</Navbar>
+        )}
+      </main>
+    </Navbar>
   );
 }
 export default Inventory;
