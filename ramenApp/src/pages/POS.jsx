@@ -145,17 +145,17 @@ function Pos() {
 
   return (
     <MobileNavbar>
-      <div className="flex flex-col md:flex-row gap-4 h-screen items-start overflow-hidden bg-gray-50">
-        {/* Left Content Area */}
-        <div className="flex-1 overflow-y-auto h-screen pb-4">
+      <div className="flex flex-col md:flex-row gap-4 md:h-screen items-start overflow-hidden bg-gray-50">
+        {/* Menu/Products Section */}
+        <div className="flex-1 overflow-y-auto md:h-screen pb-4 order-1">
           {/* Search and Categories */}
-          <div className="sticky top-0 bg-white z-10 pb-4 px-6 pt-4 shadow-sm rounded-b-lg">
+          <div className="sticky top-0 bg-white z-0 pb-4 px-2 sm:px-4 pt-4 shadow-sm rounded-b-lg">
             {/* Search Bar */}
             <div className="mb-4">
               <div className="relative">
                 <input
                   type="text"
-                  className="form-control pl-10 pr-4 py-2 rounded-lg border-gray-300 focus:border-red-400 focus:ring focus:ring-red-200 focus:ring-opacity-50 w-full bg-gray-50"
+                  className="form-control pl-10 pr-4 py-2 rounded-lg border-gray-300 focus:border-red-400 focus:ring focus:ring-red-200 focus:ring-opacity-50 w-full bg-gray-50 text-sm"
                   placeholder="     Search menu items..."
                   aria-label="Search menu"
                   value={searchQuery}
@@ -172,7 +172,7 @@ function Pos() {
               {["All", "Ramen", "Rice Bowls", "Side Dishes", "Drinks"].map((category, index) => (
                 <button
                   key={index}
-                  className={`px-6 py-2 text-sm font-medium rounded-full transition duration-200 ${
+                  className={`px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium rounded-full transition duration-200 ${
                     selectedCategory === category
                       ? 'bg-red-400 text-white shadow-md'
                       : 'bg-gray-100 text-gray-700 hover:bg-red-400 hover:text-white hover:shadow-md'
@@ -186,28 +186,28 @@ function Pos() {
           </div>
 
           {/* Product Grid Container */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-6 pt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 px-2 sm:px-6 pt-2">
             {filteredItems.map((item, index) => (
               <div 
                 key={index} 
-                className="bg-white border rounded-xl shadow-md hover:shadow-lg p-4 flex flex-col items-center cursor-pointer transition-transform duration-200 hover:-translate-y-1 min-h-[260px]"
+                className="bg-white border rounded-xl shadow-md hover:shadow-lg p-2 sm:p-4 flex flex-col items-center cursor-pointer transition-transform duration-200 hover:-translate-y-1 min-h-[180px] sm:min-h-[260px]"
                 onClick={() => handleItemClick(item)}
               >
-                <div className="w-full h-28 flex items-center justify-center mb-2 overflow-hidden rounded-md bg-gray-100">
+                <div className="w-full h-20 sm:h-28 flex items-center justify-center mb-2 overflow-hidden rounded-md bg-gray-100">
                   <img src={`/images/${item.image}`} alt={item.name} className="object-contain h-full max-w-full" />
                 </div>
-                <span className="font-semibold text-center text-base mb-1">{item.name}</span>
-                <span className="text-red-500 font-bold text-lg">PHP {item.price.toFixed(2)}</span>
+                <span className="font-semibold text-center text-xs sm:text-base mb-1">{item.name}</span>
+                <span className="text-red-500 font-bold text-sm sm:text-lg">PHP {item.price.toFixed(2)}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Cart Section */}
-        <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-96 h-screen flex flex-col border border-gray-100">
+        <div className="bg-white p-2 sm:p-6 rounded-lg shadow-lg w-full md:w-96 md:h-screen flex flex-col border border-gray-100 order-2 mb-4 md:mb-0">
           <div className="border-b pb-2 mb-3 flex justify-between items-center">
-            <h2 className="text-2xl font-bold">Cart</h2>
-            <span className="text-gray-400 text-sm font-mono">#0001</span>
+            <h2 className="text-lg sm:text-2xl font-bold">Cart</h2>
+            <span className="text-gray-400 text-xs sm:text-sm font-mono">#0001</span>
           </div>
 
           {/* Cart Items */}
@@ -219,18 +219,18 @@ function Pos() {
                 <div key={index} className="py-2 border-b last:border-b-0">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-normal text-base">{item.name}</h3>
-                      <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
+                      <h3 className="font-normal text-xs sm:text-base">{item.name}</h3>
+                      <p className="text-xs sm:text-sm text-gray-500">Qty: {item.quantity}</p>
                       {item.spiceLevel && (
-                        <p className="text-sm text-gray-500">Spice: {item.spiceLevel}</p>
+                        <p className="text-xs sm:text-sm text-gray-500">Spice: {item.spiceLevel}</p>
                       )}
                       {item.addOns && item.addOns.length > 0 && (
-                        <div className="text-sm text-gray-500">
+                        <div className="text-xs sm:text-sm text-gray-500">
                           Add-ons: {item.addOns.map(addon => addon.name).join(', ')}
                         </div>
                       )}
                     </div>
-                    <span className="text-base">PHP {item.total.toFixed(2)}</span>
+                    <span className="text-xs sm:text-base">PHP {item.total.toFixed(2)}</span>
                   </div>
                 </div>
               ))
@@ -238,7 +238,7 @@ function Pos() {
           </div>
 
           {/* Order Summary */}
-          <div className="mt-4 border-t pt-3 text-sm">
+          <div className="mt-4 border-t pt-3 text-xs sm:text-sm">
             {/* Order Type Selection */}
             <div className="mb-4">
               <label className="text-gray-600 font-medium mb-2 block">Order Type</label>
@@ -246,7 +246,7 @@ function Pos() {
                 {orderTypes.map((type) => (
                   <button
                     key={type.id}
-                    className={`p-2 rounded-lg border text-center ${
+                    className={`p-2 rounded-lg border text-center text-xs sm:text-sm ${
                       orderType === type.id
                         ? 'border-red-400 bg-red-50 text-red-600'
                         : 'border-gray-200 hover:border-red-400'
@@ -254,7 +254,7 @@ function Pos() {
                     onClick={() => setOrderType(type.id)}
                   >
                     <i className={`fas ${type.icon} mb-1`}></i>
-                    <div className="text-xs">{type.name}</div>
+                    <div>{type.name}</div>
                   </button>
                 ))}
               </div>
@@ -267,7 +267,7 @@ function Pos() {
                 {paymentMethods.map((method) => (
                   <button
                     key={method.id}
-                    className={`p-2 rounded-lg border text-center ${
+                    className={`p-2 rounded-lg border text-center text-xs sm:text-sm ${
                       paymentMethod === method.id
                         ? 'border-red-400 bg-red-50 text-red-600'
                         : 'border-gray-200 hover:border-red-400'
@@ -275,13 +275,13 @@ function Pos() {
                     onClick={() => setPaymentMethod(method.id)}
                   >
                     <i className={`fas ${method.icon} mb-1`}></i>
-                    <div className="text-xs">{method.name}</div>
+                    <div>{method.name}</div>
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="flex justify-between text-lg font-bold mt-2">
+            <div className="flex justify-between text-base font-bold mt-2">
               <span>Total</span>
               <span>PHP {calculateTotal().toFixed(2)}</span>
             </div>
@@ -298,8 +298,8 @@ function Pos() {
       {/* Payment Confirmation Modal */}
       {showPaymentModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-96">
-            <h2 className="text-xl font-bold mb-4">Confirm Order</h2>
+          <div className="bg-white rounded-lg p-4 sm:p-6 w-full max-w-xs sm:max-w-md">
+            <h2 className="text-lg sm:text-xl font-bold mb-4">Confirm Order</h2>
             <div className="mb-4">
               <p className="text-gray-600">Order Type:</p>
               <div className="flex items-center gap-2 mt-2">
@@ -316,7 +316,7 @@ function Pos() {
             </div>
             <div className="mb-4">
               <p className="text-gray-600">Total Amount:</p>
-              <p className="text-2xl font-bold text-red-600">PHP {calculateTotal().toFixed(2)}</p>
+              <p className="text-xl sm:text-2xl font-bold text-red-600">PHP {calculateTotal().toFixed(2)}</p>
             </div>
             <div className="flex gap-2">
               <button 
@@ -339,15 +339,15 @@ function Pos() {
       {/* Add to Cart Modal */}
       {showModal && selectedItem && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-96 max-h-[90vh] overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4">{selectedItem.name}</h2>
+          <div className="bg-white rounded-lg p-4 sm:p-6 w-full max-w-xs sm:max-w-md max-h-[90vh] overflow-y-auto">
+            <h2 className="text-lg sm:text-xl font-bold mb-4">{selectedItem.name}</h2>
             <img 
               src={`/images/${selectedItem.image}`} 
               alt={selectedItem.name} 
-              className="w-full h-48 object-cover rounded-lg mb-4"
+              className="w-full h-32 sm:h-48 object-cover rounded-lg mb-4"
             />
             <div className="flex justify-between items-center mb-4">
-              <span className="text-lg font-bold">PHP {selectedItem.price.toFixed(2)}</span>
+              <span className="text-base sm:text-lg font-bold">PHP {selectedItem.price.toFixed(2)}</span>
               <div className="flex items-center gap-2">
                 <button 
                   className="btn btn-outline-secondary btn-sm"
@@ -374,7 +374,7 @@ function Pos() {
                     {spiceLevels.map((level, index) => (
                       <button
                         key={index}
-                        className={`px-3 py-1 rounded-full text-sm ${
+                        className={`px-3 py-1 rounded-full text-xs sm:text-sm ${
                           selectedSpiceLevel === level.name
                             ? 'bg-red-400 text-white'
                             : 'bg-gray-200 hover:bg-red-400 hover:text-white'
@@ -394,7 +394,7 @@ function Pos() {
                     {ramenAddOns.map((addon, index) => (
                       <div
                         key={index}
-                        className={`p-2 border rounded-lg cursor-pointer ${
+                        className={`p-2 border rounded-lg cursor-pointer text-xs sm:text-sm ${
                           selectedAddOns.find(item => item.name === addon.name)
                             ? 'border-red-400 bg-red-50'
                             : 'border-gray-200'
@@ -402,8 +402,8 @@ function Pos() {
                         onClick={() => toggleAddOn(addon)}
                       >
                         <div className="flex justify-between items-center">
-                          <span className="text-sm">{addon.name}</span>
-                          <span className="text-sm font-medium">+PHP {addon.price.toFixed(2)}</span>
+                          <span>{addon.name}</span>
+                          <span className="font-medium">+PHP {addon.price.toFixed(2)}</span>
                         </div>
                       </div>
                     ))}

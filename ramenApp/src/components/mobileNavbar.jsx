@@ -8,6 +8,7 @@ import './navbar.css';
 
 const MobileNavbar = ({ children }) => {
   const [showDropdown, setShowDropdown] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   // Close dropdown when clicking outside
@@ -31,9 +32,11 @@ const MobileNavbar = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col" data-theme="autumn">
       {/* Top Navigation Bar */}
-      <header className="navbar flex flex-wrap justify-between items-center p-2  text-white custom-header sticky top-0 z-10">
-        {/* Logo */}
+      <header className="navbar flex flex-wrap justify-between items-center p-2 text-white sticky top-0 z-10">
         <div className="flex items-center">
+          <button className="md:hidden mr-2 p-2 focus:outline-none" onClick={() => setSidebarOpen(!sidebarOpen)}>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
           <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
           <span className="text-lg font-bold">Ramen App</span>
         </div>
@@ -61,30 +64,46 @@ const MobileNavbar = ({ children }) => {
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <div className="flex flex-1 overflow-hidden">
+      {/* Main Content Area: flex-row on desktop, flex-col on mobile */}
+      <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
+        {/* Sidebar Overlay for Mobile */}
+        {sidebarOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-40 z-30 md:hidden" onClick={() => setSidebarOpen(false)}></div>
+        )}
         {/* Sidebar */}
-        <nav className="sidebar w-64 h-screen text-base-content custom-sidebar text-white sticky top-0 hidden md:block">
+        <nav
+          className={`
+            sidebar
+            w-64 h-full z-40
+            fixed top-0 left-0 md:static
+            transform md:transform-none
+            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+            md:translate-x-0
+            transition-transform duration-200 ease-in-out
+            md:relative
+            md:block
+          `}
+          style={{ minHeight: '100vh' }}
+        >
           <div className="p-4">
             {/* Menu */}
             <h2 className="text-lg font-bold">Menu</h2>
             <ul className="mt-4">
               <li className="mb-2">
-                <Link to="/POS" className="block p-2 rounded hover:bg-error">
+                <Link to="/POS" className="block p-2 rounded">
                   <i className="fas fa-tachometer-alt mr-2"></i> Point of Sale
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/mobile-order" className="block p-2 rounded hover:bg-error">
+                <Link to="/mobile-order" className="block p-2 rounded">
                   <i className="fas fa-shopping-cart mr-2"></i> Mobile Order
                 </Link>
               </li>
             </ul>
           </div>
         </nav>
-
         {/* Main Content */}
-        <main className="flex-1 overflow-auto p-4 bg-base-100">
+        <main className="flex-1 overflow-auto p-2 md:p-4 bg-base-100">
           {children}
         </main>
       </div>

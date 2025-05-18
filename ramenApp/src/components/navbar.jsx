@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import logo from '../assets/logo.png';
 import admin from '../assets/adminPIC.png';
@@ -8,6 +7,7 @@ import './navbar.css';
 
 const Navbar = ({ children }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
@@ -32,10 +32,11 @@ const Navbar = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col" data-theme="autumn">
       {/* Top Navigation Bar */}
-      <header className="navbar flex flex-wrap justify-between items-center p-2  text-white custom-header sticky top-0 z-10">
-        {/* Logo */}
-
+      <header className="navbar flex flex-wrap justify-between items-center p-2 text-white sticky top-0 z-10">
         <div className="flex items-center">
+          <button className="md:hidden mr-2 p-2 focus:outline-none" onClick={() => setSidebarOpen(!sidebarOpen)}>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
           <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
           <span className="text-lg font-bold">Ramen App</span>
         </div>
@@ -49,7 +50,7 @@ const Navbar = ({ children }) => {
             onClick={() => setDropdownOpen((open) => !open)}
           />
           {dropdownOpen && (
-            <div className="absolute right-0 mt-12 w-32 bg-white text-black rounded shadow-lg z-20">
+            <div className="absolute right-0 mt-12 min-w-[8rem] bg-white text-black rounded shadow-lg z-[9999]">
               <button
                 className="block w-full text-left px-4 py-2 hover:bg-gray-200 rounded"
                 onClick={handleLogout}
@@ -61,35 +62,51 @@ const Navbar = ({ children }) => {
         </div>
       </header>
 
-      {/* Main Content Area */}
-      <div className="flex flex-1 overflow-hidden">
+      {/* Main Content Area: flex-row on desktop, flex-col on mobile */}
+      <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
+        {/* Sidebar Overlay for Mobile */}
+        {sidebarOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-40 z-30 md:hidden" onClick={() => setSidebarOpen(false)}></div>
+        )}
         {/* Sidebar */}
-        <nav className="sidebar w-64 h-screen text-base-content custom-sidebar text-white sticky top-0 hidden md:block">
+        <nav
+          className={`
+            sidebar
+            w-64 h-full z-40
+            fixed top-0 left-0 md:static
+            transform md:transform-none
+            ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+            md:translate-x-0
+            transition-transform duration-200 ease-in-out
+            md:relative
+            md:block
+          `}
+          style={{ minHeight: '100vh' }}
+        >
           <div className="p-4">
             {/* Menu */}
             <h2 className="text-lg font-bold">Menu</h2>
             <ul className="mt-4">
               <li className="mb-2">
-                <Link to="/dashboard" className="block p-2 rounded hover:bg-error">
+                <Link to="/dashboard" className="block p-2 rounded">
                   <i className="fas fa-tachometer-alt mr-2"></i> Dashboard
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/inventory" className="block p-2 rounded hover:bg-error">
+                <Link to="/inventory" className="block p-2 rounded">
                   <i className="fas fa-shopping-cart mr-2"></i> Inventory
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/sales-report" className="block p-2 rounded hover:bg-error">
+                <Link to="/sales-report" className="block p-2 rounded">
                   <i className="fas fa-users mr-2"></i> Reports
                 </Link>
               </li>
             </ul>
           </div>
         </nav>
-
         {/* Main Content */}
-        <main className="flex-1 overflow-auto p-4 bg-base-100">
+        <main className="flex-1 overflow-auto p-2 md:p-4 bg-base-100">
           {children}
         </main>
       </div>
